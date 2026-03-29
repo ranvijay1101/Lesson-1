@@ -1,0 +1,53 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+    color: aliceblue;
+}
+
+h1 {
+    color: aliceblue;
+}
+
+a {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: blue;
+}
+
+ul > li{
+    font-weight: bold;
+}
+
+h1 + p {
+    background-color: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+ul li:hover {
+    color: cornflowerblue;
+}
+
+ul li:nth-child(3) {
+    background-color: black;
+}
+
+p:not(:first-of-type) {
+    text-decoration: underline;
+}
+
+ul li::before {
+    content: "";
+}
+
+a::after {
+    content: "";
+}
+
+p::first-letter {
+    font-size: 200%;
+    color: chocolate;
+}
