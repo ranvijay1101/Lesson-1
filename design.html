@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSK Cranes | Crane Rental in Mumbai</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/1600x900/?crane,mumbai') center/cover no-repeat;
+      height: 100vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #ffcc00;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .tagline {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .header-content {
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #ffcc00;
+      color: #000;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background: #ffd633;
+      transform: scale(1.05);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 15px 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffcc00;
+    }
+
+    section {
+      padding: 80px 5%;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 50px;
+      color: #1a1a1a;
+    }
+
+    .services {
+      background: #f8f9fa;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .service-content {
+      padding: 25px;
+    }
+
+    .service-content h3 {
+      color: #ffcc00;
+      margin-bottom: 12px;
+      font-size: 1.6rem;
+    }
+
+    .about {
+      background: #fff;
+    }
+
+    .about-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .fleet {
+      background: #1a1a1a;
+      color: white;
+    }
+
+    .fleet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .crane-card {
+      background: #2a2a2a;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .crane-card h3 {
+      color: #ffcc00;
+    }
+
+    footer {
+      background: #111;
+      color: #ddd;
+      padding: 60px 5% 30px;
+      text-align: center;
+    }
+
+    .contact-info {
+      margin: 30px 0;
+      font-size: 1.1rem;
+    }
+
+    .contact-info p {
+      margin: 10px 0;
+    }
+
+    .whatsapp {
+      background: #25D366;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#fleet">Our Fleet</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home">
+    <div class="header-content">
+      <div class="logo">GSK CRANES</div>
+      <p class="tagline">"Lifting Your Projects Higher"</p>
+      <h1 style="font-size: 2.5rem; margin-bottom: 20px;">Heavy Lifting Made Easy</h1>
+      <a href="#contact" class="btn">Get Instant Quote →</a>
+    </div>
+  </header>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://source.unsplash.com/600x400/?tower-crane" alt="Tower Crane">
+        <div class="service-content">
+          <h3>Tower Cranes</h3>
+          <p>High-capacity tower cranes for high-rise construction projects across Mumbai.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://source.unsplash.com/600x400/?mobile-crane" alt="Mobile Crane">
+        <div class="service-content">
+          <h3>Mobile Cranes</h3>
+          <p>Truck-mounted & all-terrain mobile cranes from 10 to 300 tons capacity.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://source.unsplash.com/600x400/?hydraulic-crane" alt="Hydraulic Crane">
+        <div class="service-content">
+          <h3>Hydraulic Cranes</h3>
+          <p>Powerful hydraulic cranes for industrial projects and heavy machinery lifting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About GSK Cranes</h2>
+    <div class="about-content">
+      <div>
+        <h3>Trusted Crane Rental Company in Mumbai</h3>
+        <p>GSK Cranes is a leading crane rental service provider in Mumbai with over 15 years of experience. We specialize in providing safe, reliable, and cost-effective crane solutions for construction, infrastructure, and industrial projects.</p>
+        <br>
+        <p>Our fleet is modern, well-maintained, and operated by highly trained and certified operators. We are committed to safety, quality, and timely service.</p>
+        <br>
+        <strong>Why Choose Us?</strong>
+        <ul style="margin-top: 15px; padding-left: 20px;">
+          <li>✓ 24/7 Emergency Service</li>
+          <li>✓ Fully Insured Cranes</li>
+          <li>✓ Experienced Operators</li>
+          <li>✓ Competitive Rates</li>
+          <li>✓ Pan-Mumbai Delivery</li>
+        </ul>
+      </div>
+      <div>
+        <img src="https://source.unsplash.com/700x500/?crane,construction" alt="GSK Cranes" style="width:100%; border-radius:12px;">
+      </div>
+    </div>
+  </section>
+
+  <!-- Fleet Section -->
+  <section id="fleet" class="fleet">
+    <h2>Our Crane Fleet</h2>
+    <div class="fleet-grid">
+      <div class="crane-card">
+        <h3>10 - 50 Ton</h3>
+        <p>Mobile & Hydraulic Cranes</p>
+      </div>
+      <div class="crane-card">
+        <h3>50 - 150 Ton</h3>
+        <p>All Terrain Cranes</p>
+      </div>
+      <div class="crane-card">
+        <h3>150 - 300 Ton</h3>
+        <p>Heavy Duty Cranes</p>
+      </div>
+      <div class="crane-card">
+        <h3>Tower Cranes</h3>
+        <p>Flat Top & Luffing Jib</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" style="background:#0091ff; color:#000; text-align:center;">
+    <h2 style="color:#000;">Ready to Lift Your Project?</h2>
+    <p style="font-size:1.4rem; margin:20px 0;">Call us now for instant quotation</p>
+    
+    <div class="contact-info">
+      <p><strong>Phone:</strong> +91 98765 43210</p>
+      <p><strong>Alternate:</strong> +91 98200 12345</p>
+      <p><strong>Email:</strong> info@gskcranes.com</p>
+      <p><strong>Location:</strong> Andheri East, Mumbai, Maharashtra</p>
+    </div>
+
+    <a href="https://wa.me/919876543210" target="_blank" class="whatsapp">
+      💬 Chat on WhatsApp
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p> 2026 GSK Cranes | Crane Rental Company in Mumbai</p>
+    <p>All Rights Reserved | Safe • Reliable • Professional</p>
+  </footer>
+
+
+</body>
+</html>
