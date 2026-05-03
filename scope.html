@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head>
+    <title>Scope in JS</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        let globalVar = "I am a global variable";
+        function testScope(){
+            let localVar = "I am a local variable";
+            document.getElementById("demo").innerHTML = globalVar + "<br>" + localVar;
+        }
+        testScope();
+    </script>
+</body>
+</html>
