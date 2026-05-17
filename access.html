@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <title>Access HTML using JS DOM</title>
+    <style>
+        h1{
+            color: blue;
+        }
+        button{
+            padding: 10px;
+            background-color: orange;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1 id="Heading"> Hello Ranvijay</h1>
+    <button onclick="changeText()">Click me</button>
+    <script>
+        function changeText(){
+
+            let element = document.getElementById("Heading");
+
+            element.innerHTML = "Hi, Ranvijay from JavaScript";
+
+            element.style.color = "red";
+
+        }
+    </script>
+</body>
+</html>
