@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<head>
+
+
+    <title>Planet Cards</title>
+
+    <style>
+        body {
+
+            font-family: Arial;
+
+            text-align: center;
+
+            background: #f2f2f2;
+
+        }
+
+        button {
+
+            padding: 10px 20px;
+
+            margin: 20px;
+
+            font-size: 18px;
+
+        }
+
+        #cards {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 20px;
+
+        }
+
+        .card {
+
+
+            background: white;
+
+            padding: 20px;
+
+            width: 180px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 0 5px gray;
+
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Planet Cards</h1>
+
+    <button onclick="showPlanet()">Show Planets</button>
+
+    <div id="cards"></div>
+    <script>
+        class Planet {
+            constructor(namr,fact){
+                this.name = name
+                this.fact = fact
+            }
+            showCard(){
+                return ` <div class = "card">
+                    <h2>${this.name}</h2>
+                    <p>${this.fact}</p> `
+            }
+        }
+        function showPlanet(){
+            let p1 = new Planet(
+                "Mars",
+                "Mars is called the Red Planet"
+            )
+            let p2 = new Planet(
+                "Jupiter",
+                "Jupiter is the biggest planet in out solar system"
+            )
+            let p3 = new Planet(
+                "Earth",
+                "Earth has life"
+            )
+            document.getElementById("cards").innerHTML = p1.showCard() + p2.showCard() + p3.showCard()
+        }
+    </script>
+
+</body>
+</html>
+    
