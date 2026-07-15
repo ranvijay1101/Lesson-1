@@ -1,0 +1,101 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+    <title>Lucky Draw</title>
+
+    <style>
+        body {
+
+            font-family: Arial;
+
+            text-align: center;
+
+            margin-top: 50px;
+
+        }
+
+        input {
+
+            padding: 10px;
+
+            margin: 10px;
+
+        }
+
+        button {
+
+            padding: 10px 20px;
+
+            cursor: pointer;
+
+        }
+
+        #result {
+
+            color: blue;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Lucky Draw Game</h1>
+
+    <input type="text" id="name" placeholder="Enter Name" required />
+
+    <input type="number" id="guess" min="1" max="5" placeholder="Guess 1-5" required />
+
+    <button onclick="checkluck()">Check Luck</button>
+
+    <h2 id="result"></h2>
+
+    <p>Time on Page: <span id="timer">0</span> seconds</p>
+
+    <script>
+        let seconds = 0;
+        setInterval(function()  {
+            seconds++;
+            document.getElementById("timer").innerHTML = seconds;
+
+        }, 1000);
+        function checkluck() {
+            let name = document.getElementById("name").value;
+            let guess = Number(document.getElementById("guess").value);
+            let result = document.getElementById("result");
+            if (name ==="") {
+                result.innerHTML = "Please enter your name.";
+                result.style.color = "red";
+                return;
+            }
+            if (guess < 1 || guess > 5) {
+                result.innerHTML = "Please enter your name.";
+                result.style.color = "red";
+                return;
+            }
+            let luckyNumber = Math.floor(Math.random() *5) +1;
+            if (guess === luckyNumber) {
+                result.innerHTML = 
+                "🎉 Congratulations " +
+                name +
+                "! You Won! Lucky Number Was" + 
+                luckyNumber;
+                result.style.color = "green";
+
+            } else {
+                result.innerHTML = 
+                "😢 Sorry " +
+                name +
+                ", Better luck next time! Lucky Number Was " +
+                luckyNumber;
+                result.style.color = "blue";
+            }
+
+        }
+    </script>
+</body>
+</html>
