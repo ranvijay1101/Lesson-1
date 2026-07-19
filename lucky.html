@@ -72,17 +72,17 @@
                 result.style.color = "red";
                 return;
             }
-            if (guess < 1 || guess > 5) {
+            if (guess < 1 || guess > 20) {
                 result.innerHTML = "Please enter your name.";
                 result.style.color = "red";
                 return;
             }
-            let luckyNumber = Math.floor(Math.random() *5) +1;
+            let luckyNumber = Math.floor(Math.random() *20) +1;
             if (guess === luckyNumber) {
                 result.innerHTML = 
                 "🎉 Congratulations " +
                 name +
-                "! You Won! Lucky Number Was" + 
+                "! You Won! Lucky Number Was " + 
                 luckyNumber;
                 result.style.color = "green";
 
