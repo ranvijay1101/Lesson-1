@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>My Magic Word Lab</title>
+
+    <style>
+        body {
+
+            background: #f4f4f4;
+
+        }
+
+        .card {
+
+            box-shadow: 0 0 10px gray;
+
+            border-radius: 12px;
+
+        }
+
+        button {
+
+            width: 100%;
+
+        }
+
+        p {
+
+            margin-top: 15px;
+
+            font-weight: bold;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container mt-4">
+
+        <h2 class="text-center mb-4">My Magic Word Lab</h2>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="card p-3 mb-3">
+
+                    <h4>1. Data Types</h4>
+
+                    <button onclick="showTypes()" class="btn btn-primary">Check Types</button>
+
+                    <p id="typeOutput"></p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="card p-3 mb-3">
+
+                    <h4>2. Type Conversion</h4>
+
+                    <input type="text" id="convertInput" class="form-control mb-2">
+
+                    <button onclick="convertType()" class="btn btn-success">Convert</button>
+
+                    <p id="convertOutput"></p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="card p-3 mb-3">
+
+                    <h4>3. Search & Replace</h4>
+
+                    <button onclick="replaceWord()" class="btn btn-warning">Replace</button>
+
+                    <p id="replaceOutput"></p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="card p-3 mb-3">
+
+                    <h4>4. Try Catch</h4>
+
+                    <input type="text" id="divideInput" class="form-control mb-2">
+
+                    <button onclick="divide()" class="btn btn-danger">Divide</button>
+
+                    <p id="divideOutput"></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function showTypes() {
+            let score = 95;
+            let name = "Riya";
+            let gameOver = false;
+            document.getElementById("typeOutput").innerHTML = 
+            "Score : " + typeof score + "<br>" +
+            "Name :" + typeof name + "<br>" +
+            "Game Over : " + typeof gameOver;
+
+        }
+        function convertType() {
+            let value = document.getElementById("convertInput").value;
+            let stringValue = String(value);
+
+            let numberValue = Number(value);
+
+            document
+        }
+    </script>

@@ -1,333 +1,1320 @@
+# GSK Cranes
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GSK Cranes | Crane Rental in Mumbai</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GSK Cranes | Engineered Heavy Lifting</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:#080808;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root{
+    --yellow:#ffcf00;
+    --yellow-dark:#d1a700;
+
+    --bg:#080808;
+    --card:#141414;
+
+    --text:#fff;
+    --muted:#9c9c9c;
+
+    --border:rgba(255,255,255,0.08);
+
+    --shadow:0 10px 50px rgba(0,0,0,0.45);
+
+    --glow:0 0 20px rgba(255,207,0,0.25);
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+.container{
+    width:min(1250px,90%);
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+section{
+    padding:120px 0;
+    position:relative;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-size:clamp(2rem,5vw,4.5rem);
+    font-weight:900;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    max-width:700px;
+    margin:auto;
+    color:var(--muted);
+}
+
+.line{
+    width:100px;
+    height:4px;
+    border-radius:999px;
+    background:var(--yellow);
+    margin:25px auto;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+
+    padding:17px 38px;
+
+    border-radius:14px;
+
+    background:var(--yellow);
+    color:black;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:0.35s ease;
+
+    box-shadow:var(--glow);
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    background:white;
+}
+
+.glass{
+    background:rgba(255,255,255,0.03);
+    backdrop-filter:blur(14px);
+    border:1px solid var(--border);
+}
+
+/* =========================
+   THREE BG
+========================= */
+
+#bg-canvas{
+    position:fixed;
+    inset:0;
+    z-index:0;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(16px);
+
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.nav-wrap{
+    width:min(1250px,90%);
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:22px 0;
+}
+
+.logo{
+    font-size:2rem;
+    font-weight:900;
+}
+
+.logo span{
+    color:var(--yellow);
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    position:relative;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+
+    width:0%;
+    height:2px;
+
+    background:var(--yellow);
+
+    transition:0.35s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.menu-btn{
+    display:none;
+    font-size:1.5rem;
+    cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.85)
+    ),
+    url('https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.hero-tag{
+    display:inline-block;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    margin-bottom:28px;
+
+    color:var(--yellow);
+
+    background:rgba(255,207,0,0.08);
+    border:1px solid rgba(255,207,0,0.2);
+}
+
+.hero h1{
+    font-size:clamp(3.5rem,8vw,7rem);
+    line-height:0.95;
+    margin-bottom:25px;
+    font-weight:900;
+}
+
+.hero p{
+    font-size:1.15rem;
+    color:#d0d0d0;
+    max-width:700px;
+    margin-bottom:40px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn-outline{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.15);
+    color:white;
+}
+
+.btn-outline:hover{
+    background:rgba(255,255,255,0.08);
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+
+    margin-top:-80px;
+
+    position:relative;
+    z-index:2;
+}
+
+.stat-card{
+    padding:40px;
+    border-radius:24px;
+
+    transition:0.35s ease;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--glow);
+}
+
+.stat-card h3{
+    font-size:3rem;
+    color:var(--yellow);
+}
+
+.stat-card p{
+    margin-top:10px;
+    color:var(--muted);
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.service-card{
+    padding:40px;
+    border-radius:24px;
+    transition:0.35s ease;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(255,207,0,0.35);
+    box-shadow:var(--glow);
+}
+
+.service-icon{
+    width:70px;
+    height:70px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:16px;
+
+    margin-bottom:25px;
+
+    background:rgba(255,207,0,0.12);
+
+    color:var(--yellow);
+
+    font-size:1.5rem;
+}
+
+.service-card h3{
+    margin-bottom:15px;
+    font-size:1.5rem;
+}
+
+.service-card p{
+    color:var(--muted);
+}
+
+/* =========================
+   FLEET
+========================= */
+
+.filter-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+
+    margin-bottom:45px;
+}
+
+.filter-btn{
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    border:none;
+
+    cursor:pointer;
+
+    background:#1a1a1a;
+    color:white;
+
+    transition:0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+    background:var(--yellow);
+    color:black;
+}
+
+.fleet-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.fleet-card{
+    overflow:hidden;
+    border-radius:24px;
+
+    transition:0.4s ease;
+}
+
+.fleet-card:hover{
+    transform:translateY(-10px);
+    box-shadow:var(--glow);
+}
+
+.fleet-image{
+    height:250px;
+    overflow:hidden;
+}
+
+.fleet-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    transition:0.5s;
+}
+
+.fleet-card:hover img{
+    transform:scale(1.1);
+}
+
+.fleet-content{
+    padding:30px;
+}
+
+.fleet-content h3{
+    font-size:1.7rem;
+    margin-bottom:16px;
+}
+
+.specs{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.spec{
+    background:#1d1d1d;
+    padding:10px 15px;
+    border-radius:12px;
+    font-size:0.9rem;
+    color:#d2d2d2;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:auto;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+
+    width:2px;
+    height:100%;
+
+    background:rgba(255,255,255,0.08);
+}
+
+.timeline-item{
+    width:50%;
+    padding:30px;
+    position:relative;
+}
+
+.timeline-item:nth-child(odd){
+    left:0;
+    text-align:right;
+}
+
+.timeline-item:nth-child(even){
+    left:50%;
+}
+
+.timeline-box{
+    padding:30px;
+    border-radius:22px;
+}
+
+.timeline-box h3{
+    color:var(--yellow);
+    margin-bottom:10px;
+}
+
+.timeline-box p{
+    color:var(--muted);
+}
+
+/* =========================
+   QUOTE CALCULATOR
+========================= */
+
+.calculator{
+    max-width:800px;
+    margin:auto;
+
+    padding:50px;
+    border-radius:30px;
+}
+
+.calculator-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:18px;
+
+    border-radius:14px;
+
+    border:1px solid #2a2a2a;
+
+    background:#101010;
+    color:white;
+
+    font-family:inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:var(--yellow);
+}
+
+.quote-result{
+    margin-top:30px;
+    padding:25px;
+
+    border-radius:20px;
+
+    background:rgba(255,207,0,0.08);
+
+    text-align:center;
+}
+
+.quote-result h3{
+    font-size:2.2rem;
+    color:var(--yellow);
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+
+    padding:60px;
+
+    border-radius:30px;
+}
+
+.contact-info h2{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.contact-info p{
+    color:var(--muted);
+    margin-bottom:30px;
+}
+
+.contact-details{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.contact-item{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.contact-item i{
+    width:50px;
+    height:50px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:14px;
+
+    background:rgba(255,207,0,0.12);
+
+    color:var(--yellow);
+}
+
+.contact-form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:40px 0;
+    text-align:center;
+    color:var(--muted);
+    border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
+
+    .menu-btn{
+        display:block;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
+    .nav-links{
+        position:absolute;
+        top:100%;
+        left:0;
+
+        width:100%;
+
+        background:#111;
+
+        flex-direction:column;
+
+        padding:30px;
+
+        display:none;
     }
 
-    header {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/1600x900/?crane,mumbai') center/cover no-repeat;
-      height: 100vh;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
+    .nav-links.active{
+        display:flex;
     }
 
-    .logo {
-      font-size: 3.5rem;
-      font-weight: bold;
-      color: #ffcc00;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    .timeline::before{
+        left:20px;
     }
 
-    .tagline {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
+    .timeline-item,
+    .timeline-item:nth-child(even),
+    .timeline-item:nth-child(odd){
+        width:100%;
+        left:0;
+        text-align:left;
+        padding-left:60px;
     }
 
-    .header-content {
-      max-width: 800px;
-      padding: 20px;
+    .calculator-grid,
+    .contact-box{
+        grid-template-columns:1fr;
     }
+}
 
-    .btn {
-      display: inline-block;
-      background: #ffcc00;
-      color: #000;
-      padding: 14px 32px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      text-decoration: none;
-      margin-top: 20px;
-      transition: all 0.3s;
-    }
-
-    .btn:hover {
-      background: #ffd633;
-      transform: scale(1.05);
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      padding: 15px 0;
-      z-index: 1000;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #ffcc00;
-    }
-
-    section {
-      padding: 80px 5%;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 2.8rem;
-      margin-bottom: 50px;
-      color: #1a1a1a;
-    }
-
-    .services {
-      background: #f8f9fa;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .service-card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-
-    .service-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .service-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-
-    .service-content {
-      padding: 25px;
-    }
-
-    .service-content h3 {
-      color: #ffcc00;
-      margin-bottom: 12px;
-      font-size: 1.6rem;
-    }
-
-    .about {
-      background: #fff;
-    }
-
-    .about-content {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .fleet {
-      background: #1a1a1a;
-      color: white;
-    }
-
-    .fleet-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-    }
-
-    .crane-card {
-      background: #2a2a2a;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .crane-card h3 {
-      color: #ffcc00;
-    }
-
-    footer {
-      background: #111;
-      color: #ddd;
-      padding: 60px 5% 30px;
-      text-align: center;
-    }
-
-    .contact-info {
-      margin: 30px 0;
-      font-size: 1.1rem;
-    }
-
-    .contact-info p {
-      margin: 10px 0;
-    }
-
-    .whatsapp {
-      background: #25D366;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 50px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: bold;
-    }
-  </style>
+</style>
 </head>
+
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About Us</a></li>
-      <li><a href="#fleet">Our Fleet</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<canvas id="bg-canvas"></canvas>
 
-  <!-- Hero Section -->
-  <header id="home">
-    <div class="header-content">
-      <div class="logo">GSK CRANES</div>
-      <p class="tagline">"Lifting Your Projects Higher"</p>
-      <h1 style="font-size: 2.5rem; margin-bottom: 20px;">Heavy Lifting Made Easy</h1>
-      <a href="#contact" class="btn">Get Instant Quote →</a>
-    </div>
-  </header>
+<!-- NAV -->
 
-  <!-- Services Section -->
-  <section id="services" class="services">
-    <h2>Our Services</h2>
-    <div class="service-grid">
-      <div class="service-card">
-        <img src="https://source.unsplash.com/600x400/?tower-crane" alt="Tower Crane">
-        <div class="service-content">
-          <h3>Tower Cranes</h3>
-          <p>High-capacity tower cranes for high-rise construction projects across Mumbai.</p>
+<nav>
+    <div class="nav-wrap">
+
+        <div class="logo">
+            GSK<span>CRANES</span>
         </div>
-      </div>
-      <div class="service-card">
-        <img src="https://source.unsplash.com/600x400/?mobile-crane" alt="Mobile Crane">
-        <div class="service-content">
-          <h3>Mobile Cranes</h3>
-          <p>Truck-mounted & all-terrain mobile cranes from 10 to 300 tons capacity.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <img src="https://source.unsplash.com/600x400/?hydraulic-crane" alt="Hydraulic Crane">
-        <div class="service-content">
-          <h3>Hydraulic Cranes</h3>
-          <p>Powerful hydraulic cranes for industrial projects and heavy machinery lifting.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <h2>About GSK Cranes</h2>
-    <div class="about-content">
-      <div>
-        <h3>Trusted Crane Rental Company in Mumbai</h3>
-        <p>GSK Cranes is a leading crane rental service provider in Mumbai with over 15 years of experience. We specialize in providing safe, reliable, and cost-effective crane solutions for construction, infrastructure, and industrial projects.</p>
-        <br>
-        <p>Our fleet is modern, well-maintained, and operated by highly trained and certified operators. We are committed to safety, quality, and timely service.</p>
-        <br>
-        <strong>Why Choose Us?</strong>
-        <ul style="margin-top: 15px; padding-left: 20px;">
-          <li>✓ 24/7 Emergency Service</li>
-          <li>✓ Fully Insured Cranes</li>
-          <li>✓ Experienced Operators</li>
-          <li>✓ Competitive Rates</li>
-          <li>✓ Pan-Mumbai Delivery</li>
-        </ul>
-      </div>
-      <div>
-        <img src="https://source.unsplash.com/700x500/?crane,construction" alt="GSK Cranes" style="width:100%; border-radius:12px;">
-      </div>
-    </div>
-  </section>
+        <div class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
 
-  <!-- Fleet Section -->
-  <section id="fleet" class="fleet">
-    <h2>Our Crane Fleet</h2>
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#fleet">Fleet</a>
+            <a href="#timeline">Projects</a>
+            <a href="#quote">Quote</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+    </div>
+</nav>
+
+<!-- HERO -->
+
+<header class="hero" id="home">
+
+    <div class="container hero-content">
+
+        <div class="hero-tag">
+            Heavy Lifting • Precision Engineering • Zero Compromise
+        </div>
+
+        <h1>
+            BUILT FOR
+            MEGA LIFTS
+        </h1>
+
+        <p>
+            GSK Cranes delivers elite heavy lifting solutions for industrial,
+            infrastructure, bridge, energy, and urban development projects.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#contact" class="btn">
+                Start Your Project
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a href="#fleet" class="btn btn-outline">
+                Explore Fleet
+            </a>
+        </div>
+
+    </div>
+
+</header>
+
+<!-- STATS -->
+
+<div class="container">
+
+    <div class="stats-grid">
+
+        <div class="stat-card glass">
+            <h3 class="counter" data-target="600">0</h3>
+            <p>Ton Lift Capacity</p>
+        </div>
+
+        <div class="stat-card glass">
+            <h3 class="counter" data-target="120">0</h3>
+            <p>Major Projects</p>
+        </div>
+
+        <div class="stat-card glass">
+            <h3 class="counter" data-target="99">0</h3>
+            <p>Safety Compliance</p>
+        </div>
+
+        <div class="stat-card glass">
+            <h3>24/7</h3>
+            <p>Operational Support</p>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+<div class="container">
+
+    <div class="section-title">
+        <h2>Core Services</h2>
+        <div class="line"></div>
+        <p>
+            Specialized engineered lifting systems tailored for high-risk,
+            high-capacity construction operations.
+        </p>
+    </div>
+
+    <div class="services-grid">
+
+        <div class="service-card glass reveal">
+            <div class="service-icon">
+                <i class="fa-solid fa-industry"></i>
+            </div>
+            <h3>Industrial Lifting</h3>
+            <p>
+                Precision heavy lifting for factories, refineries, and industrial plants.
+            </p>
+        </div>
+
+        <div class="service-card glass reveal">
+            <div class="service-icon">
+                <i class="fa-solid fa-bridge"></i>
+            </div>
+            <h3>Bridge Construction</h3>
+            <p>
+                Large-scale bridge beam lifting and structural placement systems.
+            </p>
+        </div>
+
+        <div class="service-card glass reveal">
+            <div class="service-icon">
+                <i class="fa-solid fa-building"></i>
+            </div>
+            <h3>Urban Development</h3>
+            <p>
+                Safe tower crane operations for dense metropolitan construction.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- FLEET -->
+
+<section id="fleet">
+
+<div class="container">
+
+    <div class="section-title">
+        <h2>Elite Fleet</h2>
+        <div class="line"></div>
+        <p>
+            Specialized heavy equipment engineered for maximum reliability.
+        </p>
+    </div>
+
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="tower">Tower</button>
+        <button class="filter-btn" data-filter="crawler">Crawler</button>
+        <button class="filter-btn" data-filter="terrain">Terrain</button>
+    </div>
+
     <div class="fleet-grid">
-      <div class="crane-card">
-        <h3>10 - 50 Ton</h3>
-        <p>Mobile & Hydraulic Cranes</p>
-      </div>
-      <div class="crane-card">
-        <h3>50 - 150 Ton</h3>
-        <p>All Terrain Cranes</p>
-      </div>
-      <div class="crane-card">
-        <h3>150 - 300 Ton</h3>
-        <p>Heavy Duty Cranes</p>
-      </div>
-      <div class="crane-card">
-        <h3>Tower Cranes</h3>
-        <p>Flat Top & Luffing Jib</p>
-      </div>
+
+        <div class="fleet-card glass fleet-item tower reveal">
+
+            <div class="fleet-image">
+                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=1200&auto=format&fit=crop">
+            </div>
+
+            <div class="fleet-content">
+                <h3>Sany SCT 800TS</h3>
+
+                <div class="specs">
+                    <div class="spec">47.5 meter Boom</div>
+                    <div class="spec">80T Capacity</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="fleet-card glass fleet-item crawler reveal">
+
+            <div class="fleet-image">
+                <img src="https://images.unsplash.com/photo-1627993077703-9e471960570b?q=80&w=1200&auto=format&fit=crop">
+            </div>
+
+            <div class="fleet-content">
+                <h3>Liebherr LR 1600/2</h3>
+
+                <div class="specs">
+                    <div class="spec">600T Capacity</div>
+                    <div class="spec">150m Jib</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="fleet-card glass fleet-item terrain reveal">
+
+            <div class="fleet-image">
+                <img src="c:\Users\Ranvijay Singh Saini\OneDrive\Desktop\HTML Programs\sany-stc800-80-ton-truck-craneq.png">
+            </div>
+
+            <div class="fleet-content">
+                <h3>Tadano GR-1000XL</h3>
+
+                <div class="specs">
+                    <div class="spec">Rough Terrain</div>
+                    <div class="spec">100T Capacity</div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section id="contact" style="background:#0091ff; color:#000; text-align:center;">
-    <h2 style="color:#000;">Ready to Lift Your Project?</h2>
-    <p style="font-size:1.4rem; margin:20px 0;">Call us now for instant quotation</p>
-    
-    <div class="contact-info">
-      <p><strong>Phone:</strong> +91 98765 43210</p>
-      <p><strong>Alternate:</strong> +91 98200 12345</p>
-      <p><strong>Email:</strong> info@gskcranes.com</p>
-      <p><strong>Location:</strong> Andheri East, Mumbai, Maharashtra</p>
+</div>
+
+</section>
+
+<!-- TIMELINE -->
+
+<section id="timeline">
+
+<div class="container">
+
+    <div class="section-title">
+        <h2>Major Projects</h2>
+        <div class="line"></div>
     </div>
 
-    <a href="https://wa.me/919876543210" target="_blank" class="whatsapp">
-      💬 Chat on WhatsApp
-    </a>
-  </section>
+    <div class="timeline">
 
-  <!-- Footer -->
-  <footer>
-    <p> 2026 GSK Cranes | Crane Rental Company in Mumbai</p>
-    <p>All Rights Reserved | Safe • Reliable • Professional</p>
-  </footer>
+        <div class="timeline-item reveal">
+            <div class="timeline-box glass">
+                <h3>2022 — Metro Expansion</h3>
+                <p>
+                    Lifted over 250 steel structures for regional transit infrastructure.
+                </p>
+            </div>
+        </div>
 
+        <div class="timeline-item reveal">
+            <div class="timeline-box glass">
+                <h3>2023 — River Bridge</h3>
+                <p>
+                    Precision beam installation with 600T crawler systems.
+                </p>
+            </div>
+        </div>
+
+        <div class="timeline-item reveal">
+            <div class="timeline-box glass">
+                <h3>2024 — Skyline Towers</h3>
+                <p>
+                    High-rise tower crane deployment for urban mega-development.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- QUOTE -->
+
+<section id="quote">
+
+<div class="container">
+
+    <div class="section-title">
+        <h2>Instant Quote Calculator</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="calculator glass">
+
+        <div class="calculator-grid">
+
+            <input type="number" id="tonnage" placeholder="Required Tonnage">
+
+            <input type="number" id="days" placeholder="Project Duration (days)">
+
+            <select id="distance">
+                <option value="1000">Local Site</option>
+                <option value="5000">Regional Transport</option>
+                <option value="12000">Long Distance</option>
+            </select>
+
+            <select id="operator">
+                <option value="0">Without Operator</option>
+                <option value="2500">With Certified Operator</option>
+            </select>
+
+        </div>
+
+        <div class="quote-result">
+            <p>Estimated Starting Cost</p>
+            <h3 id="quotePrice">$0</h3>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="container">
+
+    <div class="contact-box glass">
+
+        <div class="contact-info">
+
+            <h2>Let's Lift Something Massive.</h2>
+
+            <p>
+                Connect with our engineering and operations teams for tailored heavy lifting solutions.
+            </p>
+
+            <div class="contact-details">
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+1 (555) GSK-HEAVY</span>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>logistics@gskcranes.com</span>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>100 Powerhouse Ave, Iron City</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <form class="contact-form">
+
+            <input type="text" placeholder="Company Name">
+
+            <input type="text" placeholder="Project Location">
+
+            <select>
+                <option>Select Crane Type</option>
+                <option>Tower Crane</option>
+                <option>Crawler Crane</option>
+                <option>Rough Terrain</option>
+                <option>Mobile Crane</option>
+            </select>
+
+            <textarea rows="5" placeholder="Project details..."></textarea>
+
+            <button class="btn">
+                Submit Request
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</section>
+
+<footer>
+    © 2026 GSK Cranes — Safety Without Compromise
+</footer>
+
+<script>
+
+/* =========================
+   MOBILE NAV
+========================= */
+
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click',()=>{
+    navLinks.classList.toggle('active');
+});
+
+/* =========================
+   FLEET FILTER
+========================= */
+
+const filterButtons = document.querySelectorAll('.filter-btn');
+const fleetItems = document.querySelectorAll('.fleet-item');
+
+filterButtons.forEach(btn=>{
+
+    btn.addEventListener('click',()=>{
+
+        filterButtons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+
+        fleetItems.forEach(item=>{
+
+            if(filter === 'all'){
+                item.style.display = 'block';
+            }
+            else if(item.classList.contains(filter)){
+                item.style.display = 'block';
+            }
+            else{
+                item.style.display = 'none';
+            }
+
+        });
+
+    });
+
+});
+
+/* =========================
+   QUOTE CALCULATOR
+========================= */
+
+const tonnage = document.getElementById('tonnage');
+const days = document.getElementById('days');
+const distance = document.getElementById('distance');
+const operator = document.getElementById('operator');
+const quotePrice = document.getElementById('quotePrice');
+
+function calculateQuote(){
+
+    const t = Number(tonnage.value) || 0;
+    const d = Number(days.value) || 0;
+    const dist = Number(distance.value) || 0;
+    const op = Number(operator.value) || 0;
+
+    const total = (t * 150) + (d * 1200) + dist + op;
+
+    quotePrice.innerText = '$' + total.toLocaleString();
+}
+
+[tonnage,days,distance,operator].forEach(el=>{
+    el.addEventListener('input',calculateQuote);
+});
+
+/* =========================
+   COUNTER ANIMATION
+========================= */
+
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter=>{
+
+    const target = +counter.dataset.target;
+
+    let current = 0;
+
+    const updateCounter = ()=>{
+
+        const increment = target / 80;
+
+        current += increment;
+
+        if(current < target){
+            counter.innerText = Math.ceil(current) + '+';
+            requestAnimationFrame(updateCounter);
+        }
+        else{
+            counter.innerText = target + '+';
+        }
+    }
+
+    ScrollTrigger.create({
+        trigger: counter,
+        start:'top 85%',
+        once:true,
+        onEnter:updateCounter
+    });
+
+});
+
+/* =========================
+   GSAP REVEALS
+========================= */
+
+gsap.registerPlugin(ScrollTrigger);
+
+const reveals = document.querySelectorAll('.reveal');
+
+reveals.forEach(el=>{
+
+    gsap.from(el,{
+        opacity:0,
+        y:70,
+        duration:1,
+        ease:'power3.out',
+        scrollTrigger:{
+            trigger:el,
+            start:'top 85%'
+        }
+    });
+
+});
+
+/* =========================
+   HERO ANIMATION
+========================= */
+
+gsap.from('.hero-tag',{
+    opacity:0,
+    y:30,
+    duration:1
+});
+
+gsap.from('.hero h1',{
+    opacity:0,
+    y:50,
+    duration:1.2,
+    delay:0.2
+});
+
+gsap.from('.hero p',{
+    opacity:0,
+    y:40,
+    duration:1,
+    delay:0.4
+});
+
+gsap.from('.hero-buttons',{
+    opacity:0,
+    y:40,
+    duration:1,
+    delay:0.6
+});
+
+/* =========================
+   THREE.JS PARTICLES
+========================= */
+
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth/window.innerHeight,
+    0.1,
+    1000
+);
+
+const renderer = new THREE.WebGLRenderer({
+    canvas:document.getElementById('bg-canvas'),
+    alpha:true
+});
+
+renderer.setSize(window.innerWidth,window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+
+const particlesGeometry = new THREE.BufferGeometry();
+const particlesCount = 1500;
+
+const posArray = new Float32Array(particlesCount * 3);
+
+for(let i=0;i<particlesCount * 3;i++){
+    posArray[i] = (Math.random() - 0.5) * 15;
+}
+
+particlesGeometry.setAttribute(
+    'position',
+    new THREE.BufferAttribute(posArray,3)
+);
+
+const particlesMaterial = new THREE.PointsMaterial({
+    size:0.015,
+    color:0xffcf00
+});
+
+const particlesMesh = new THREE.Points(
+    particlesGeometry,
+    particlesMaterial
+);
+
+scene.add(particlesMesh);
+
+camera.position.z = 5;
+
+function animate(){
+    requestAnimationFrame(animate);
+
+    particlesMesh.rotation.y += 0.0008;
+    particlesMesh.rotation.x += 0.0003;
+
+    renderer.render(scene,camera);
+}
+
+animate();
+
+window.addEventListener('resize',()=>{
+
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(window.innerWidth,window.innerHeight);
+
+});
+
+</script>
 
 </body>
 </html>
+```

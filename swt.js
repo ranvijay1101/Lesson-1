@@ -1,4 +1,4 @@
-let day = 5
+let day = 3
 
 switch(day){
     case 1:
