@@ -13,7 +13,7 @@ title.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
 name_label = Label(window, text='Name:', fg='black', bg='white')
 
 name_label.grid(row=1, column=0, padx=10, pady=5)
-
+21
 name_entry = Entry(window, fg='blue', bg='lightyellow', width=25)
 
 name_entry.grid(row=1, column=1, padx=10, pady=5)
