@@ -7,7 +7,7 @@ window.geometry('400x420')
 title = Label(window, text='My Photo Album', fg='white', bg='purple', width=40)
 title.pack(pady=10)
 img_file = Image.open('myphoto.jpeg')
-img_file = img_file.resize((300, 300))git 
+img_file = img_file.resize((300, 300))
 photo = ImageTk.PhotoImage(img_file)
 photo_label = Label(window, image=photo)
 photo_label.pack(pady=10)
