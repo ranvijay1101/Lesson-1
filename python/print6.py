@@ -1,9 +1,9 @@
-from tkinteer import *
+from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
 root = Tk()
 root.title('Denomination counter')
-root.configuration(bg='lightblue')
+root.configure(bg='lightblue')
 root.geometry('650x400')
 upload = Image.open('image.png')
 upload = upload.resize((300, 300))
@@ -16,10 +16,10 @@ Label1 = Label(root,
 Label1.place(relx=0.5, rely=0.1, anchor=CENTER)
 def msg():
     MsgBox = messagebox.showinfo(
-        "Alert, " "Do you want to caalculate the denomination count?")
+        "Alert", "Do you want to calculate the denomination count?")
     if MsgBox == 'ok':
         topwin()
-button1 = Button(root, 
+button1 = Button (root, 
                  text = "Let's get started!",
                  command = msg,
                  bg = 'red'
@@ -39,7 +39,7 @@ lbl = Label(top, text="Here are number of notes for each denomination:", bg = 'l
 li = Labell(top, text = "2000: ", bg = 'light grey')
 l2 = Label(top, text = "500: ", bg = 'light grey')
 l3 = Label(top, text = "200: ", bg = 'light grey')
-t1 Entry(top)
+t1 = Entry(top)
 t2 = Entry(top)
 t3 = Entry(top)
 def calculator():
